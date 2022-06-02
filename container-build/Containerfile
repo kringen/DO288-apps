@@ -18,4 +18,3 @@ EXPOSE 8080
 
 # Add a USER instruction for an unprivileged user. The Red Hat convention is to use userid 100
 USER 1001
-~                   
