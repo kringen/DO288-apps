@@ -1,9 +1,6 @@
 # Use the httpd-parent image as base
 FROM quay.io/redhattraining/httpd-parent
 
-# Use the httpd-parent image as base
-FROM quay.io/redhattraining/httpd-parent
-
 LABEL io.k8s.description="A basic Apache HTTP Server child image, uses ONBUILD" \
       io.k8s.display-name="Apache HTTP Server" \
       io.openshift.expose-services="8080:http" \
@@ -16,6 +13,8 @@ RUN sed -i "s/#ServerName www.example.com:80/ServerName 0.0.0.0:8080/g" /etc/htt
 # Change the group ID and permissions of the folders where the web server process reads and writes files:
 RUN chgrp -R 0 /var/log/httpd /var/run/httpd && \
     chmod -R g=u /var/log/httpd /var/run/httpd
+
+EXPOSE 8080
 
 # Add a USER instruction for an unprivileged user. The Red Hat convention is to use userid 100
 USER 1001
